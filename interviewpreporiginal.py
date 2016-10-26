@@ -1,4 +1,6 @@
-# Reverse a linked list.
+#
+#	REVERSE A LINKED LIST.
+#
 class Node:
     def __init__(self, val, nxt):
         self.val = val
@@ -50,7 +52,9 @@ prnt(nr2)
 
 
 
-# Reverse a string.
+#
+#	REVERSE A STRING
+#
 def reverseString(str):
 	# Create an array. 
 	newString = []
@@ -71,7 +75,9 @@ reverseString_2("hello")
 
 
 
-# Give the nth fibonacci number, recursively and iteratively.
+#
+#	GIVE THE NTH FIBONACCI NUMBER, RECURSIVELY AND ITERATIVELY.
+#
 # Recursively, O(2^n)
 def fib_r(n):
 	if n == 0:
@@ -89,7 +95,9 @@ def fib_i(n):
 
 
 
-# Check if a word is a palindrome.
+#
+#	CHECK IF A WORD IS A PALINDROME.
+#
 def isPalindrome_1(word):
     first = len(word) - 1
     last = 0
@@ -102,8 +110,80 @@ def isPalindrome_1(word):
 
 def isPalindrome_2(word):
 	return word == word[::-1]
+
 # test
 test1 = isPalindrome_1("rainbow")
 test2 = isPalindrome_2("mom")
 print(test1)
 print(test2)
+
+
+
+
+#
+#	REVERSE AN INTEGER. (Do not use a string)
+#
+# 123 --> 321
+def reverseInt(n):
+	# 123 % 10 = 3
+	reverse = 0
+	while n > 0:
+		remainder = n % 10 # 3
+		reverse = reverse * 10 + remainder
+		n = n // 10 # move left in original integer
+	return reverse
+#test
+print(reverseInt(12345))
+
+
+
+
+#
+#	GIVEN A STRING, RETURN AN INT REPRESENTATION. GIVEN AN INT, RETURN A STRING REPRESENTATION.
+#
+def intToStr(int):
+    return str(int)
+
+def strToInt(str):
+    return int(str)
+
+n = 123
+print (intToStr(n))
+print (type(intToStr(n)) == str)
+print (strToInt(n))
+print (type(strToInt(n)) == int)
+
+
+
+
+# Suppose we have an array with increasing integers and at some point they start 
+# decreasing. Write a method to return the max integer
+# [0, 1, 2, 3, 6, 7, 10, 8, 5, 4] ==> 10  (aim for logn time)
+# assume no repeats
+# binary search
+def findMax(arr):
+	
+	return
+
+
+
+
+# longest common subsequence - dynamic programming
+
+# longest common substring - dynamic programming
+
+# max sum in an array of numbers
+
+# finding 3 numbers that add to a number
+
+# finding the kth smallest index in a rotated array -- can be done linear time
+
+
+
+
+
+
+
+
+
+
