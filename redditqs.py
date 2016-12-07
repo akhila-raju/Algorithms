@@ -259,6 +259,18 @@ def dfs_paths(graph, start, target, path=None):
     for vertex in [x for x in graph[start] if x not in path]:
         for each_path in dfs_paths(graph, vertex, target, path + [vertex]):
             yield each_path
+
+def dfs_paths(graph, start, target):
+    stack = dequeue( [ (start, [start]) ] )
+    while stack:
+        node = stack.pop()
+        for adjacent in graph[node[0]]:
+            if adjacent not in node[1]:
+                if node == target:
+                    yield graph[node[1]] + [node]
+                else:
+                    stack.append( (node, graph[node[1]] + [node]) )
+
             
 from collections import deque
 def bfs(graph, node):
@@ -273,7 +285,7 @@ def bfs(graph, node):
 
 def bfs_paths(graph, start, target):
 	# (node, path)
-    queue = deque([(start, [start])])
+    queue = deque( [ (start, [start]) ] )
     while queue:
     	# last in first out
         vertex_path = queue.popleft()
@@ -283,7 +295,7 @@ def bfs_paths(graph, start, target):
             if node == target:
                 yield vertex_path[1] + [node]
             else:
-                queue.append((node, vertex_path[1] + [node]))
+                queue.append( (node, vertex_path[1] + [node]) )
 
 def shortest_path(graph, start, target):
     return next(bfs_paths(graph, start, target))
@@ -304,10 +316,6 @@ def isBST(node):
 		isBST(node.right)
 		return node.right.val > node.val
 
-def isBST(node):
-	if node == None:
-		return True
-	if node.
 
 # Find the smallest element in a BST
 # leftmost
@@ -357,10 +365,45 @@ def preOrder(node): # P L R
 		return []
 	return node.val + preOrder(node.left) + preOrder(node.right)
 
+def preOrder(root):
+    #Write your code here
+    if root != None:
+        # print on same line with comma and space
+        print(str(root.data), end= " ")
+        preOrder(root.left)
+        preOrder(root.right)
+
 def inOrder(node): # L P R
     if node == None:
         return []
     return inOrder(node.left) + node.val + inOrder(node.right)
+
+
+def getHeight(self, root, height=0):
+    #Write your code here
+    if root == None:
+        return -1
+    else:
+        return max(self.getHeight(root.left), self.getHeight(root.right)) + 1
+
+
+def check_binary_search_tree_(root):
+    # left subtree is less than, right subtree is greater than
+    inorder_arr = inOrder(root, [])
+    temp = 0
+    for item in inorder_arr:
+        if item > temp:
+            temp = item
+        else:
+            return False
+    return True
+    
+def inOrder(root, arr):
+    if root != None:
+        inOrder(root.left, arr)
+        arr.append(root.data)
+        inOrder(root.right, arr)
+    return arr
 
 # Implement a stack with push and pop functions
 class Stack:
@@ -446,6 +489,13 @@ print(queue)
 
 # Reverse a linked list iteratively and recursively
 
+
+# Print a linked list in reverse order
+def ReversePrint(head):
+    if head != None:
+        ReversePrint(head.next)
+        print(head.data)
+        
 
 # Implement bubble sort
 
